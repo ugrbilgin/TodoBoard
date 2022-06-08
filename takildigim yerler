@@ -1,0 +1,15 @@
+navigasyon yapisini kurgularken takildim
+    navigate edebiliyorum ama bunu app.jsx icinde nasil dinamik hale getirecegim?
+    Cozum: Link to  title yerine link to uid yapacam bu id ayni zamanda dokumanin uid'si olacak boylece
+    gittigim linki componente props olarak verebilecegim. props olarak id ile firestoredan ilgili boardun verilerini 
+    cekcem. Add New icin istisna yapip ekleme modalini acacagim
+
+Yapilacaklar:
+    Board Card icin state yap
+    board ekleme pageini yap
+    board icinde todo sayfasi yap
+    firestore kurulumu yap
+
+
+Firestore yapisi:
+    Boards> boardID  > boardfields
