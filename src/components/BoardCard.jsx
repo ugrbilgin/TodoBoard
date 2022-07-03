@@ -65,13 +65,13 @@ const BoardCard = ({ board }) => {
         >
           {!!board.count && board.count + " tasks"} {/*ben adamin dibiyim aq bunu anladim*/}
         </Typography>
-
-        <Link to={`/board/${board.title}`}>
-          {" "}
-          <Button size="small" onClick={board.func}>
-            Learn More
-          </Button>{" "}
-        </Link>
+        {!!board.id && (
+          <Link to={`/board/${board.id}`}>
+            <Button size="small" onClick={board.func}>
+              Learn More
+            </Button>
+          </Link>
+        )}
       </CardActions>
     </Card>
   );

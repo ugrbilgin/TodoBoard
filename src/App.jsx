@@ -23,7 +23,7 @@ function App() {
           <AppBar />
           <BoardsPage />
           <Routes>
-            <Route path="/board/istanbul" element={<p> anan</p>} />
+            <Route path="/:boardId" element={<p> anan</p>} />
           </Routes>
         </Router>
       </ThemeProvider>
