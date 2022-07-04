@@ -15,6 +15,30 @@ import TextField from "@mui/material/TextField";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+import Box from "@mui/material/Box";
+import SpeedDial from "@mui/material/SpeedDial";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+
+function BasicSpeedDial({ todo }) {
+  return (
+    <Box sx={{ height: 80, transform: "translateZ(0px)", flexGrow: 1 }}>
+      <SpeedDial ariaLabel="SpeedDial basic example" sx={{ position: "absolute", bottom: 16, right: 16 }} icon={<MoreVertIcon />} direction={`left`}>
+        <SpeedDialAction
+          key={"Delete"}
+          icon={<DeleteIcon />}
+          tooltipTitle={"Delete"}
+          onClick={() => {
+            setDoc(doc(db, "todos", todo.id), { deleted: true });
+          }}
+        />
+        <SpeedDialAction key={"Edit"} icon={<EditIcon />} tooltipTitle={"Edit"} />
+      </SpeedDial>
+    </Box>
+  );
+}
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -63,9 +87,13 @@ export default function FullScreenDialog({ board }) {
         </AppBar>
         <List>
           {todos.map((todo) => (
-            <ListItem key={todo.id}>
-              <ListItemText primary={todo.todo} />
-            </ListItem>
+            <>
+              <ListItem key={todo.id} button>
+                <ListItemText primary={todo.todo} />
+                <BasicSpeedDial todo={todo} />
+              </ListItem>
+              <Divider />
+            </>
           ))}
           <ListItem button>
             <TextField
