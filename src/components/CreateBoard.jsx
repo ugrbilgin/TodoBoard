@@ -23,7 +23,7 @@ export default function CreateBordFormDrawer() {
     <Dialog open={isOpen} onClose={toggle}>
       <DialogTitle>Create A New Board</DialogTitle>
       <DialogContent>
-        <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText>
+        <DialogContentText> Enter the board info </DialogContentText>
         <TextField
           autoFocus
           margin="dense"
@@ -57,6 +57,7 @@ export default function CreateBordFormDrawer() {
               description: description,
               createdAt: Date.now(),
             });
+            toggle();
           }}
         >
           Save
@@ -65,4 +66,3 @@ export default function CreateBordFormDrawer() {
     </Dialog>
   );
 }
-//

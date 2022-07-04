@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import TodoDialog from "./TodoDialog";
 
 const bull = (
   <Box component="span" sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}>
@@ -62,13 +63,11 @@ const BoardCard = ({ board }) => {
             lineHeight: "1.5",
             color: "text.tertiary",
           }}
-        >
-          {!!board.count && board.count + " tasks"} {/*ben adamin dibiyim aq bunu anladim*/}
-        </Typography>
+        ></Typography>
         {!!board.id && (
           <Link to={`/board/${board.id}`}>
             <Button size="small" onClick={board.func}>
-              Learn More
+              <TodoDialog board={board} />
             </Button>
           </Link>
         )}
